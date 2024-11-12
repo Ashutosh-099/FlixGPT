@@ -36,3 +36,14 @@ export const validateSignUpForm = (name, emailId, password) => {
     return "Ensure the password is at least 8 character long, containing at least one lowercase letter, one uppercase letter, one digit and one special character[@$!%*?&]";
   return undefined;
 };
+
+export function createContextData(initialValue) {
+  let value = initialValue;
+
+  return {
+    getValue: () => value,
+    setValue: (newValue) => {
+      value = newValue;
+    },
+  };
+}

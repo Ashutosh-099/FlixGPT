@@ -1,5 +1,4 @@
 import { useContext, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Button, CircularProgress } from "@mui/material";
 import { auth } from "../../utils/firebase.config";
 import {
@@ -12,8 +11,8 @@ import { validateLogInForm, validateSignUpForm } from "../../utils/helper";
 import { UserContext } from "../../contexts/UserContext";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const [user, setUser] = useContext(UserContext);
+  const userData = useContext(UserContext);
+  
   const [isSignIn, setIsSignIn] = useState(true);
   const [onFormSubmitLoad, setFormSubmitLoad] = useState(false);
   const [message, setMessage] = useState(undefined);
@@ -41,12 +40,8 @@ const Login = () => {
         return;
       }
 
-      signInWithEmailAndPassword(auth, userEmail, userPassword)
-        .then(() => {
-          // Navigate
-          navigate("/browse");
-        })
-        .catch((error) => {
+      signInWithEmailAndPassword(auth, userEmail, userPassword).catch(
+        (error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setMessage({
@@ -54,7 +49,8 @@ const Login = () => {
             message: errorCode + "- " + errorMessage,
           });
           setFormSubmitLoad(false);
-        });
+        }
+      );
     } else {
       const userName = name.current.value;
       const userEmail = email.current.value;
@@ -73,8 +69,10 @@ const Login = () => {
             displayName: userName,
           })
             .then(() => {
-              setUser(auth.currentUser);
-              navigate("/browse");
+              const name = auth.currentUser.displayName;
+              const user = userData.getValue();
+              user.displayName = name;
+              userData.setValue(user);
             })
             .catch((error) => {
               setFormSubmitLoad(false);

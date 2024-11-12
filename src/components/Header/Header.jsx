@@ -1,22 +1,31 @@
-import { useContext } from "react";
-import { Button } from "@mui/material";
-import { signOut } from "firebase/auth";
+import { useEffect, useContext } from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../utils/firebase.config";
+import { Button, Tooltip } from "@mui/material";
 import { UserContext } from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
-  const [user] = useContext(UserContext);
+  const userData = useContext(UserContext);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { displayName, email, accessToken, uid } = user;
+        userData.setValue({ displayName, email, accessToken, uid });
+        navigate("/browse");
+      } else {
+        userData.setValue(undefined);
+        navigate("/");
+      }
+      
+      // Unsubscribe "onAuthStateChanged" when Header unmounts
+      return() => unsubscribe();
+    });
+  }, [navigate, userData]);
 
   const onSignOutClick = () => {
-    signOut(auth)
-      .then(() => {
-        navigate("/");
-      })
-      .catch((error) => {
-        // An error happened.
-      });
+    signOut(auth);
   };
 
   return (
@@ -26,22 +35,31 @@ const Header = () => {
         alt="flix-gpt-logo"
         className="h-24 py-4"
       />
-      {user && (
+      {userData.getValue() && (
         <div className="flex">
-          <Button
-            variant="contained"
-            sx={{
-              backgroundColor: "white",
-              color: "black",
-              textTransform: "none",
-              borderRadius: "25px",
-              fontWeight: "bold",
-              padding: "5px 16px",
-            }}
-            onClick={onSignOutClick}
-          >
-            Sign Out
-          </Button>
+          <Tooltip title={"Hello " + userData.getValue().displayName + "! 👋"}>
+            <img
+              src="/assets/profile-logo.png"
+              alt="profile-image"
+              className="rounded-md mr-4"
+            />
+          </Tooltip>
+          <Tooltip title="Leaving so soon? ;(">
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "white",
+                color: "black",
+                textTransform: "none",
+                borderRadius: "25px",
+                fontWeight: "bold",
+                padding: "5px 16px",
+              }}
+              onClick={onSignOutClick}
+            >
+              Sign Out
+            </Button>
+          </Tooltip>
         </div>
       )}
     </header>

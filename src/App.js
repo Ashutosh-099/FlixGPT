@@ -1,23 +1,11 @@
-import { useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./utils/firebase.config";
 import { UserContext } from "./contexts/UserContext";
 import Login from "./components/Login/Login";
 import LandingPage from "./components/LandingPage/LandingPage";
+import { createContextData } from "./utils/helper";
 
 function App() {
-  const [user, setUser] = useState(undefined);
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(undefined);
-      }
-    });
-  }, []);
+  const userData = createContextData(undefined);
 
   const browserRouter = createBrowserRouter(
     [
@@ -42,7 +30,7 @@ function App() {
   );
 
   return (
-    <UserContext.Provider value={[user, setUser]}>
+    <UserContext.Provider value={userData}>
       <RouterProvider
         router={browserRouter}
         future={{ v7_startTransition: true }}
