@@ -3,6 +3,7 @@ import { UserContext } from "./contexts/UserContext";
 import Login from "./components/Login/Login";
 import LandingPage from "./components/LandingPage/LandingPage";
 import { createContextData } from "./utils/helper";
+import { routesPath } from "./utils/constants";
 
 function App() {
   const userData = createContextData(undefined);
@@ -10,11 +11,11 @@ function App() {
   const browserRouter = createBrowserRouter(
     [
       {
-        path: "/",
+        path: routesPath.login,
         element: <Login />,
       },
       {
-        path: "/browse",
+        path: routesPath.browse,
         element: <LandingPage />,
       },
     ],

@@ -4,6 +4,8 @@ import { auth } from "../../utils/firebase.config";
 import { Button, Tooltip } from "@mui/material";
 import { UserContext } from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
+import { signOutBtnStyles } from "./Header.styles";
+import { routesPath, strings } from "../../utils/constants";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -13,14 +15,14 @@ const Header = () => {
       if (user) {
         const { displayName, email, accessToken, uid } = user;
         userData.setValue({ displayName, email, accessToken, uid });
-        navigate("/browse");
+        navigate(routesPath.browse);
       } else {
         userData.setValue(undefined);
-        navigate("/");
+        navigate(routesPath.login);
       }
-      
+
       // Unsubscribe "onAuthStateChanged" when Header unmounts
-      return() => unsubscribe();
+      return () => unsubscribe();
     });
   }, [navigate, userData]);
 
@@ -31,33 +33,26 @@ const Header = () => {
   return (
     <header className="w-9/12 mx-auto flex justify-between items-center">
       <img
-        src={"./assets/logo-complete.png"}
-        alt="flix-gpt-logo"
+        src={strings.headerLogoURL}
+        alt={strings.headerLogoAlt}
         className="h-24 py-4"
       />
       {userData.getValue() && (
         <div className="flex">
           <Tooltip title={"Hello " + userData.getValue().displayName + "! 👋"}>
             <img
-              src="/assets/profile-logo.png"
-              alt="profile-image"
+              src={strings.headerProfileLogoURL}
+              alt={strings.headerProfileAlt}
               className="rounded-md mr-4"
             />
           </Tooltip>
-          <Tooltip title="Leaving so soon? ;(">
+          <Tooltip title={strings.signOutTooltip}>
             <Button
               variant="contained"
-              sx={{
-                backgroundColor: "white",
-                color: "black",
-                textTransform: "none",
-                borderRadius: "25px",
-                fontWeight: "bold",
-                padding: "5px 16px",
-              }}
+              sx={signOutBtnStyles}
               onClick={onSignOutClick}
             >
-              Sign Out
+              {strings.signOutBtnName}
             </Button>
           </Tooltip>
         </div>

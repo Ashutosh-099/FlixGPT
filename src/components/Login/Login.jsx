@@ -9,10 +9,12 @@ import {
 import Header from "../Header/Header";
 import { validateLogInForm, validateSignUpForm } from "../../utils/helper";
 import { UserContext } from "../../contexts/UserContext";
+import { strings } from "../../utils/constants";
+import { submitBtnStyles } from "./Login.styles";
 
 const Login = () => {
   const userData = useContext(UserContext);
-  
+
   const [isSignIn, setIsSignIn] = useState(true);
   const [onFormSubmitLoad, setFormSubmitLoad] = useState(false);
   const [message, setMessage] = useState(undefined);
@@ -104,7 +106,7 @@ const Login = () => {
           <div className="w-3/12 bg-black/70 mx-auto py-8 px-16 text-white rounded-md">
             <header className="my-5">
               <span className="text-3xl font-bold">
-                {isSignIn ? "Sign In" : "Sign Up"}
+                {isSignIn ? strings.signIn : strings.signUp}
               </span>
             </header>
             <form className="mt-6" onSubmit={(e) => e.preventDefault()}>
@@ -122,7 +124,7 @@ const Login = () => {
                 <input
                   type="text"
                   className="w-full bg-transparent p-3 border border-gray-400 rounded-md my-3 focus:border-2 focus:border-white focus:bg-[#465a7e66]"
-                  placeholder="Name"
+                  placeholder={strings.nameInputPlaceholder}
                   ref={name}
                   disabled={onFormSubmitLoad}
                 />
@@ -131,14 +133,14 @@ const Login = () => {
               <input
                 type="text"
                 className="w-full bg-transparent p-3 border border-gray-400 rounded-md my-3 focus:border-2 focus:border-white focus:bg-[#465a7e66]"
-                placeholder="Email or mobile number"
+                placeholder={strings.emailInputPlaceholder}
                 ref={email}
                 disabled={onFormSubmitLoad}
               />
               <input
                 type="password"
                 className="w-full bg-transparent p-3 border border-gray-400 rounded-md my-3 focus:border-2 focus:border-white focus:bg-[#465a7e66]"
-                placeholder="Password"
+                placeholder={strings.passwordInputPlaceholder}
                 ref={password}
                 disabled={onFormSubmitLoad}
               />
@@ -146,23 +148,11 @@ const Login = () => {
                 variant="contained"
                 size="large"
                 fullWidth
-                sx={{
-                  backgroundColor: "red",
-                  margin: "0.8rem 0",
-                  textTransform: "none",
-                  fontWeight: 600,
-                  ":hover": {
-                    backgroundColor: "#bc0101",
-                  },
-                  ":disabled": {
-                    backgroundColor: "#800000",
-                    color: "white",
-                  },
-                }}
+                sx={submitBtnStyles}
                 onClick={onSubmitBtnClick}
                 disabled={onFormSubmitLoad}
               >
-                {isSignIn ? "Sign In" : "Create account"}
+                {isSignIn ? strings.signIn : strings.createAccountBtnName}
               </Button>
               {onFormSubmitLoad ? (
                 <div className="text-center my-2">
@@ -175,13 +165,13 @@ const Login = () => {
                   </p>
                   <p className="my-3 text-lg">
                     <span className="text-gray-300">
-                      {isSignIn ? "New to FlixGPT? " : "Existing Account? "}{" "}
+                      {isSignIn ? strings.newToFlix : strings.existingAccount}{" "}
                     </span>
                     <span
                       className="text-white font-semibold hover:underline cursor-pointer"
                       onClick={handleOnSignUpClick}
                     >
-                      {isSignIn ? "Sign up now." : "Sign in now."}
+                      {isSignIn ? strings.signupNow : strings.signInNow}
                     </span>
                   </p>
                 </>
