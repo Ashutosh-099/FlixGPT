@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 import Header from "../Header/Header";
-import { useGetNowPlayingMovies } from "../../utils/useGetNowPlayingMovies";
+import { useGetNowPlayingMovies } from "../../utils/hooks/useGetNowPlayingMovies";
 
 const LandingPage = () => {
   useGetNowPlayingMovies();
 
   return (
-    <div className="bg-gradient-to-b from-black">
+    <div>
       <Header />
       <Outlet />
     </div>

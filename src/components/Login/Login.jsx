@@ -99,85 +99,83 @@ const Login = () => {
   };
 
   return (
-    <div className="background-image-login bg-cover h-[100vh] -z-1">
-      <div className="bg-gradient-to-b from-black">
-        <Header />
-        <div id="form-container" className="my-12">
-          <div className="w-3/12 bg-black/70 mx-auto py-8 px-16 text-white rounded-md">
-            <header className="my-5">
-              <span className="text-3xl font-bold">
-                {isSignIn ? strings.signIn : strings.signUp}
-              </span>
-            </header>
-            <form className="mt-6" onSubmit={(e) => e.preventDefault()}>
-              {message && (
-                <p
-                  className={`text-sm font-semibold my-3" ${
-                    message.type === "error" ? "text-red-500" : "text-green-500"
-                  }`}
-                >
-                  {message.message}
-                </p>
-              )}
+    <div className="absolute w-full background-image-login bg-cover h-screen">
+      <Header />
+      <div id="form-container" className="h-full flex items-center">
+        <div className="w-3/12 bg-black/70 mx-auto py-8 px-16 text-white rounded-md">
+          <header className="my-5">
+            <span className="text-3xl font-bold">
+              {isSignIn ? strings.signIn : strings.signUp}
+            </span>
+          </header>
+          <form className="mt-6" onSubmit={(e) => e.preventDefault()}>
+            {message && (
+              <p
+                className={`text-sm font-semibold my-3" ${
+                  message.type === "error" ? "text-red-500" : "text-green-500"
+                }`}
+              >
+                {message.message}
+              </p>
+            )}
 
-              {!isSignIn && (
-                <input
-                  type="text"
-                  className="w-full bg-transparent p-3 border border-gray-400 rounded-md my-3 focus:border-2 focus:border-white focus:bg-[#465a7e66]"
-                  placeholder={strings.nameInputPlaceholder}
-                  ref={name}
-                  disabled={onFormSubmitLoad}
-                />
-              )}
-
+            {!isSignIn && (
               <input
                 type="text"
                 className="w-full bg-transparent p-3 border border-gray-400 rounded-md my-3 focus:border-2 focus:border-white focus:bg-[#465a7e66]"
-                placeholder={strings.emailInputPlaceholder}
-                ref={email}
+                placeholder={strings.nameInputPlaceholder}
+                ref={name}
                 disabled={onFormSubmitLoad}
               />
-              <input
-                type="password"
-                className="w-full bg-transparent p-3 border border-gray-400 rounded-md my-3 focus:border-2 focus:border-white focus:bg-[#465a7e66]"
-                placeholder={strings.passwordInputPlaceholder}
-                ref={password}
-                disabled={onFormSubmitLoad}
-              />
-              <Button
-                variant="contained"
-                size="large"
-                fullWidth
-                sx={submitBtnStyles}
-                onClick={onSubmitBtnClick}
-                disabled={onFormSubmitLoad}
-              >
-                {isSignIn ? strings.signIn : strings.createAccountBtnName}
-              </Button>
-              {onFormSubmitLoad ? (
-                <div className="text-center my-2">
-                  <CircularProgress sx={{ color: "red" }} />
-                </div>
-              ) : (
-                <>
-                  <p className="text-center text-gray-400 font-semibold my-2">
-                    OR
-                  </p>
-                  <p className="my-3 text-lg">
-                    <span className="text-gray-300">
-                      {isSignIn ? strings.newToFlix : strings.existingAccount}{" "}
-                    </span>
-                    <span
-                      className="text-white font-semibold hover:underline cursor-pointer"
-                      onClick={handleOnSignUpClick}
-                    >
-                      {isSignIn ? strings.signupNow : strings.signInNow}
-                    </span>
-                  </p>
-                </>
-              )}
-            </form>
-          </div>
+            )}
+
+            <input
+              type="text"
+              className="w-full bg-transparent p-3 border border-gray-400 rounded-md my-3 focus:border-2 focus:border-white focus:bg-[#465a7e66]"
+              placeholder={strings.emailInputPlaceholder}
+              ref={email}
+              disabled={onFormSubmitLoad}
+            />
+            <input
+              type="password"
+              className="w-full bg-transparent p-3 border border-gray-400 rounded-md my-3 focus:border-2 focus:border-white focus:bg-[#465a7e66]"
+              placeholder={strings.passwordInputPlaceholder}
+              ref={password}
+              disabled={onFormSubmitLoad}
+            />
+            <Button
+              variant="contained"
+              size="large"
+              fullWidth
+              sx={submitBtnStyles}
+              onClick={onSubmitBtnClick}
+              disabled={onFormSubmitLoad}
+            >
+              {isSignIn ? strings.signIn : strings.createAccountBtnName}
+            </Button>
+            {onFormSubmitLoad ? (
+              <div className="text-center my-2">
+                <CircularProgress sx={{ color: "red" }} />
+              </div>
+            ) : (
+              <>
+                <p className="text-center text-gray-400 font-semibold my-2">
+                  OR
+                </p>
+                <p className="my-3 text-lg">
+                  <span className="text-gray-300">
+                    {isSignIn ? strings.newToFlix : strings.existingAccount}{" "}
+                  </span>
+                  <span
+                    className="text-white font-semibold hover:underline cursor-pointer"
+                    onClick={handleOnSignUpClick}
+                  >
+                    {isSignIn ? strings.signupNow : strings.signInNow}
+                  </span>
+                </p>
+              </>
+            )}
+          </form>
         </div>
       </div>
     </div>

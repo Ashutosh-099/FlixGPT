@@ -31,32 +31,36 @@ const Header = () => {
   };
 
   return (
-    <header className="w-9/12 mx-auto flex justify-between items-center">
-      <img
-        src={strings.headerLogoURL}
-        alt={strings.headerLogoAlt}
-        className="h-24 py-4"
-      />
-      {userData.getValue() && (
-        <div className="flex">
-          <Tooltip title={"Hello " + userData.getValue().displayName + "! 👋"}>
-            <img
-              src={strings.headerProfileLogoURL}
-              alt={strings.headerProfileAlt}
-              className="rounded-md mr-4"
-            />
-          </Tooltip>
-          <Tooltip title={strings.signOutTooltip}>
-            <Button
-              variant="contained"
-              sx={signOutBtnStyles}
-              onClick={onSignOutClick}
+    <header className="w-full mx-auto absolute bg-gradient-to-b from-black">
+      <div className="w-9/12 mx-auto flex justify-between items-center">
+        <img
+          src={strings.headerLogoURL}
+          alt={strings.headerLogoAlt}
+          className="h-24 py-4"
+        />
+        {userData.getValue() && (
+          <div className="flex">
+            <Tooltip
+              title={"Hello " + userData.getValue().displayName + "! 👋"}
             >
-              {strings.signOutBtnName}
-            </Button>
-          </Tooltip>
-        </div>
-      )}
+              <img
+                src={strings.headerProfileLogoURL}
+                alt={strings.headerProfileAlt}
+                className="rounded-md mr-4"
+              />
+            </Tooltip>
+            <Tooltip title={strings.signOutTooltip}>
+              <Button
+                variant="contained"
+                sx={signOutBtnStyles}
+                onClick={onSignOutClick}
+              >
+                {strings.signOutBtnName}
+              </Button>
+            </Tooltip>
+          </div>
+        )}
+      </div>
     </header>
   );
 };
