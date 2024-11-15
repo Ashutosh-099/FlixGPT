@@ -9,7 +9,7 @@ const MovieVideo = (props) => {
   return (
     <div className="absolute">
       <iframe
-        src={"https://www.youtube.com/embed/" + trailerVideoId?.key + "?&autoplay=1&mute=1&controls=0&rel=0"}
+        src={"https://www.youtube.com/embed/" + trailerVideoId?.key + "?&autoplay=1&mute=1&controls=0&rel=0&loop=1"}
         title="Movie Trailer"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         className="w-screen aspect-[16/7]"
