@@ -6,7 +6,7 @@ import { routesPath } from "./utils/constants";
 import { appStore } from "./store";
 import Login from "./components/Login/Login";
 import LandingPage from "./components/LandingPage/LandingPage";
-import MovieTrailerComponent from "./components/MovieTrailerComponent/MovieTrailerComponent";
+import MovieTrailer from "./components/MovieTrailer/MovieTrailer";
 
 function App() {
   const userData = createContextData(undefined);
@@ -23,7 +23,7 @@ function App() {
         children: [
           {
             path: routesPath.browse,
-            element: <MovieTrailerComponent />,
+            element: <MovieTrailer />,
           },
         ],
       },

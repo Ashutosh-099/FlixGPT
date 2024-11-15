@@ -31,7 +31,7 @@ const Header = () => {
   };
 
   return (
-    <header className="w-full mx-auto absolute bg-gradient-to-b from-black">
+    <header className="w-full mx-auto absolute bg-gradient-to-b from-black z-10">
       <div className="w-9/12 mx-auto flex justify-between items-center">
         <img
           src={strings.headerLogoURL}
