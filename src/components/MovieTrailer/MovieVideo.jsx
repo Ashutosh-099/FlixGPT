@@ -7,12 +7,16 @@ const MovieVideo = (props) => {
   useGetMovieTrailer(movieId);
 
   return (
-    <div className="absolute">
+    <div>
       <iframe
-        src={"https://www.youtube.com/embed/" + trailerVideoId?.key + "?&autoplay=1&mute=1&controls=0&rel=0&loop=1"}
+        src={
+          "https://www.youtube.com/embed/" +
+          trailerVideoId?.key +
+          "?&autoplay=1&loop=1&mute=1&controls=0&rel=0"
+        }
         title="Movie Trailer"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        className="w-screen aspect-[16/7]"
+        className="w-full aspect-[16/7]"
       ></iframe>
     </div>
   );

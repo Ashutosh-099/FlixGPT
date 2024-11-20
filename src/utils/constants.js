@@ -25,6 +25,8 @@ export const strings = {
 export const apiURLs = {
   nowPlayingMovies: "https://api.themoviedb.org/3/movie/now_playing?page=1",
   movieTrailer: "https://api.themoviedb.org/3/movie/",
+  popularMovies: "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+  topRatedMovies: "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
 };
 
 export const API_OPTIONS = {
@@ -35,3 +37,5 @@ export const API_OPTIONS = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmY2M0ODFmMzFhZTMxMTUwZjI3NzdhNjU2NWY3ZTc2MyIsIm5iZiI6MTczMTY0MDAwOC4yMDQ4NjUsInN1YiI6IjVmODMyMDZjMzg0NjlhMDAzOThlZGNmNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.fQwX3ILkzJxdosrGF11yLBiZvhEUokezDwQ68w8hg6E",
   },
 };
+
+export const TMDB_IMAGE_URL = "https://image.tmdb.org/t/p/w300/";
