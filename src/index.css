@@ -34,3 +34,11 @@ code {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+.ellipsis-style {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

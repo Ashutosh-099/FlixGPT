@@ -5,10 +5,11 @@ import { usePopularMovies } from "../../utils/hooks/usePopularMovies";
 import { useTopRatedMovies } from "../../utils/hooks/useTopRatedMovies";
 
 const LandingPage = () => {
+
   useGetNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();
-  
+
   return (
     <div>
       <Header />

@@ -1,0 +1,14 @@
+export const lang = {
+    en: {
+        search: "Search",
+        searchBarPlaceholder: "What would you like to watch today?"
+    },
+    hindi: {
+        search: "खोज",
+        searchBarPlaceholder: "आज आप क्या देखना चाहेंगे?"
+    },
+    spanish: {
+        search: "Buscar",
+        searchBarPlaceholder: "¿Qué te gustaría ver hoy?"
+    },
+};

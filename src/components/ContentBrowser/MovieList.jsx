@@ -8,7 +8,7 @@ const MovieList = (props) => {
   const onScrollBtnClick = (direction) => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const scrollAmount = 500;
+      const scrollAmount = 550;
 
       if (direction === "left") {
         container.scrollLeft -= scrollAmount;
@@ -23,7 +23,7 @@ const MovieList = (props) => {
     <div className="p-4">
       <p className="text-3xl font-semibold">{title}</p>
       <div>
-        <button className="absolute left-0 mt-[10%]" onClick={() => { onScrollBtnClick("left")}}>
+        <button className="absolute left-0 mt-[12%]" onClick={() => { onScrollBtnClick("left")}}>
           <svg
             width="64px"
             height="64px"
@@ -32,25 +32,25 @@ const MovieList = (props) => {
             xmlns="http://www.w3.org/2000/svg"
             stroke="#ffffff"
           >
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
             <g
               id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             ></g>
             <g id="SVGRepo_iconCarrier">
               {" "}
               <path
                 d="M14 8L10 12L14 16"
                 stroke="#ffffff"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               ></path>{" "}
             </g>
           </svg>
         </button>
-        <button className="absolute right-0 mt-[10%]" onClick={() => { onScrollBtnClick("right")}}>
+        <button className="absolute right-0 mt-[12%]" onClick={() => { onScrollBtnClick("right")}}>
           <svg
             width="64px"
             height="64px"
@@ -59,20 +59,20 @@ const MovieList = (props) => {
             xmlns="http://www.w3.org/2000/svg"
             stroke="#000000"
           >
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
             <g
               id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             ></g>
             <g id="SVGRepo_iconCarrier">
               {" "}
               <path
                 d="M10 16L14 12L10 8"
                 stroke="#ffffff"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               ></path>{" "}
             </g>
           </svg>

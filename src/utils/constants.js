@@ -1,7 +1,14 @@
 export const routesPath = {
   login: "/",
   browse: "/browse",
+  gptSearchView: "/browse/gptSearch"
 };
+
+export const SUPPORTED_LANGUAGE = [
+  {identifier: "en", name: "English"},
+  {identifier: "hindi", name: "Hindi"},
+  {identifier: "spanish", name: "Spanish"}
+];
 
 export const strings = {
   headerLogoURL: "./assets/logo-complete.png",

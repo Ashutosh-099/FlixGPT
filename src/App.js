@@ -7,6 +7,7 @@ import { appStore } from "./store";
 import Login from "./components/Login/Login";
 import LandingPage from "./components/LandingPage/LandingPage";
 import ContentBrowser from "./components/ContentBrowser/ContentBrowser";
+import GPTSearchContainer from "./components/GPTSearchContainer/GPTSearchContainer";
 
 function App() {
   const userData = createContextData(undefined);
@@ -24,6 +25,10 @@ function App() {
           {
             path: routesPath.browse,
             element: <ContentBrowser />,
+          },
+          {
+            path: routesPath.gptSearchView,
+            element: <GPTSearchContainer />,
           },
         ],
       },
