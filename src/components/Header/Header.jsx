@@ -8,6 +8,7 @@ import { signOutBtnStyles } from "./Header.styles";
 import { routesPath, strings, SUPPORTED_LANGUAGE } from "../../utils/constants";
 import { useDispatch } from "react-redux";
 import { changeLanguage } from "../../store/LangConfigSlice";
+import { clearGptMovie } from "../../store/gptMovieSlice";
 
 const Header = () => {
   const userData = useContext(UserContext);
@@ -35,9 +36,10 @@ const Header = () => {
   };
 
   return (
-    <header className="w-full mx-auto absolute bg-gradient-to-b from-black z-10">
-      <div className="w-9/12 mx-auto flex justify-between items-center">
+    <header className="w-full mx-auto absolute bg-gradient-to-b from-black z-10 sm:bg-black lg:bg-transparent lg:bg-gradient-to-b lg:from-black">
+      <div className="w-9/12 mx-auto flex justify-between items-center flex-col lg:flex-row">
         <img
+          loading="eager"
           src={strings.headerLogoURL}
           alt={strings.headerLogoAlt}
           className="h-24 py-4 cursor-pointer"
@@ -77,6 +79,7 @@ const Header = () => {
                 <button
                   className="mr-4"
                   onClick={() => {
+                    dispatch(clearGptMovie());
                     navigate(routesPath.gptSearchView);
                   }}
                 >

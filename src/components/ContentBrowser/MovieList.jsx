@@ -16,14 +16,18 @@ const MovieList = (props) => {
         container.scrollLeft += scrollAmount;
       }
     }
-
-  }
+  };
 
   return (
     <div className="p-4">
       <p className="text-3xl font-semibold">{title}</p>
       <div>
-        <button className="absolute left-0 mt-[12%]" onClick={() => { onScrollBtnClick("left")}}>
+        <button
+          className="absolute left-0 mt-[12%]"
+          onClick={() => {
+            onScrollBtnClick("left");
+          }}
+        >
           <svg
             width="64px"
             height="64px"
@@ -50,7 +54,12 @@ const MovieList = (props) => {
             </g>
           </svg>
         </button>
-        <button className="absolute right-0 mt-[12%]" onClick={() => { onScrollBtnClick("right")}}>
+        <button
+          className="absolute right-0 mt-[12%]"
+          onClick={() => {
+            onScrollBtnClick("right");
+          }}
+        >
           <svg
             width="64px"
             height="64px"
@@ -77,7 +86,10 @@ const MovieList = (props) => {
             </g>
           </svg>
         </button>
-        <section className="flex flex-row flex-nowrap overflow-x-auto gap-4 scroll-smooth snap-x snap-mandatory scrollbar-hide" ref={scrollContainerRef}>
+        <section
+          className="flex flex-row flex-nowrap overflow-x-auto gap-4 scroll-smooth snap-x snap-mandatory scrollbar-hide"
+          ref={scrollContainerRef}
+        >
           {movieData.map((movie) => (
             <MovieCard key={movie.id} imagePath={movie?.poster_path} />
           ))}

@@ -11,7 +11,7 @@ const LandingPage = () => {
   useTopRatedMovies();
 
   return (
-    <div>
+    <div className="bg-black">
       <Header />
       <Outlet />
     </div>

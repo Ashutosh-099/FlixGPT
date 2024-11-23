@@ -41,8 +41,10 @@ export const API_OPTIONS = {
   headers: {
     accept: "application/json",
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmY2M0ODFmMzFhZTMxMTUwZjI3NzdhNjU2NWY3ZTc2MyIsIm5iZiI6MTczMTY0MDAwOC4yMDQ4NjUsInN1YiI6IjVmODMyMDZjMzg0NjlhMDAzOThlZGNmNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.fQwX3ILkzJxdosrGF11yLBiZvhEUokezDwQ68w8hg6E",
+      "Bearer " + process.env.REACT_APP_TMDB_KEY,
   },
 };
 
 export const TMDB_IMAGE_URL = "https://image.tmdb.org/t/p/w300/";
+
+export const OPENAI_KEY= process.env.REACT_APP_OPENAI_API_KEY;
